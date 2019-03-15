@@ -9,6 +9,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CodeGameApplication {
 
 	public static void main(String[] args) {
+		//MongoClientURI uri = new MongoClientURI("mongodb+srv://codersquest:uRIRQs6QKCdZJ1FR@cluster0.mongodb.net/admin");
+
+		//MongoClient mongoClient = new MongoClient(uri);
+		//MongoDatabase database = mongoClient.getDatabase("codersquest");
+		
 		SpringApplication.run(CodeGameApplication.class, args);
 	}
 
