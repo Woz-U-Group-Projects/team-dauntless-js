@@ -1,17 +1,17 @@
-<form class="loginform" (ngSubmit)="onSubmit()">
+<form class="registerform" (ngSubmit)="onSubmit()">
   <div>
       <label for="username">Userame: </label>
-      <input type="text" placeholder="name" name="name" required [(ngModel)]="user.name">
+      <input type="text" placeholder="name" name="name" required ngModel="user.name">
   </div>
   <div>
       <label for="email">Email: </label>
-      <input type="email" placeholder="email" name="email" email required [(ngModel)]="user.email">
+      <input type="email" placeholder="email" name="email" email required ngModel="user.email">
   </div>
   <div>
       <label for="password">Password: </label>
-      <input type="text" placeholder="subject" name="subject" required [(ngModel)]="user.subject">
+      <input type="text" placeholder="password" name="password" required ngModel="user.password">
   </div>
   <div>
-      <button type="submit">Submit</button>
+      <button type="submit">Register</button>
   </div>
 </form>
