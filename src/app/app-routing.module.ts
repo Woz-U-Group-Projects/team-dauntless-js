@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import {  RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'leaderboard',
+    component: LeaderboardComponent
   },
   {
     path: '',
