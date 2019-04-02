@@ -1,0 +1,7 @@
+<div class="leaderboard">
+  <h2>High Scores!</h2>
+  <ul>
+    <li *ngFor="let user of users"> <!-- Does the database need to order the scores?-->
+      <p>{{user.username}}: High Score: {{user.highestScore}}</p>
+    </li>
+  </ul>
