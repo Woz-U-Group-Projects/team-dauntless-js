@@ -1,1 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Remove margin and padding from body */
+body { margin: 0; padding: 0; }
