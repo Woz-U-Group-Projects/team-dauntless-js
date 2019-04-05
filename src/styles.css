@@ -2,3 +2,7 @@
 
 /* Remove margin and padding from body */
 body { margin: 0; padding: 0; }
+
+* {
+    font-family: 'Heebo', sans-serif;
+}
