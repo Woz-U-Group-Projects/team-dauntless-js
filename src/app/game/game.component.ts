@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent {
-  const config: GameConfig = {
+  private readonly config: GameConfig = {
     title: 'CodeQuest',
     width: 800,
     height: 600,
