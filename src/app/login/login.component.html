@@ -1,18 +1,22 @@
-<form class="loginform" (ngSubmit)="onSubmit()">
-    <div>
-        <label for="username">Userame: </label>
-        <input type="text" placeholder="name" name="name" required ngModel="user.name">
-    </div>
-    <div>
-        <label for="email">Email: </label>
-        <input type="email" placeholder="email" name="email" email required ngModel="user.email">
-    </div>
-    <div>
-        <label for="password">Password: </label>
-        <input type="text" placeholder="password" name="password" required ngModel="user.password">
-    </div>
-    <div>
-        <button type="submit">Submit</button>
-    </div>
-  </form>
+<mat-card>
+    <mat-card-content>
+        <form class="loginform" (ngSubmit)="onSubmit()">
+            <div>
+                <label for="username">Userame: </label>
+                <input type="text" placeholder="name" name="name" required ngModel="user.name">
+            </div>
+            <div>
+                <label for="email">Email: </label>
+                <input type="email" placeholder="email" name="email" email required ngModel="user.email">
+            </div>
+            <div>
+                <label for="password">Password: </label>
+                <input type="text" placeholder="password" name="password" required ngModel="user.password">
+            </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
 
