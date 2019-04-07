@@ -14,6 +14,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule, MatCard } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 
 // Application Component's
 import { AppComponent } from './app.component';
@@ -48,7 +49,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     FlexLayoutModule,
     MatToolbarModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatInputModule
   ],
   providers: [ UserService ],
   bootstrap: [AppComponent]
