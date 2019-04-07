@@ -10,6 +10,9 @@ import { PhaserModule } from 'phaser-component-library';
 // Flexlayout Modules
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+// Browser Animations
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 // Material Design Components
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -47,6 +50,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     AppRoutingModule,
     PhaserModule,
     FlexLayoutModule,
+    BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,
