@@ -23,7 +23,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/theme/code_quest.scss"
             ],
             "scripts": [
               "node_modules/phaser/dist/phaser.js"
