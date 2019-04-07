@@ -1,9 +1,11 @@
-<nav
+<mat-toolbar
  fxLayout="row"
  fxLayoutAlign="space-between center"
  
  fxLayout.lt-sm="column"
- fxLayoutAlign.lt-sm="center center">
+ fxLayoutAlign.lt-sm="center center"
+ 
+ color="primary">
   <header>
     <span>Code-Quest</span>
   </header>
@@ -11,9 +13,21 @@
    fxLayout="row"
    fxLayoutAlign="center center"
    fxLayoutGap="10px">
-    <a routerLink="/home">Home</a>
-    <a routerLink="/login">Login</a>
-    <a routerLink="/register">Register</a>
-    <a routerLink="/game">Game</a>
+    <a
+     mat-flat-button
+     color="primary"
+     routerLink="/home">Home</a>
+    <a
+     mat-flat-button
+     color="primary"
+     routerLink="/login">Login</a>
+    <a
+     mat-flat-button
+     color="primary"
+     routerLink="/register">Register</a>
+    <a
+     mat-flat-button
+     color="primary"
+     routerLink="/game">Game</a>
   </div>
-</nav>
+</mat-toolbar>
