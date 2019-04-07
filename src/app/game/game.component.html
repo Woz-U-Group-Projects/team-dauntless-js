@@ -1,3 +1,7 @@
-<div class="gameCanvas">
-
+<div
+ fxLayout="row"
+ fxLayoutAlign="center center">
+    <phaser-component (gameReady)="onGameReady($event)" [gameConfig]="config" [Phaser]="phaser">
+        <!-- Phaser's HTMLCanvasElement will reside here... -->
+    </phaser-component>
 </div>
