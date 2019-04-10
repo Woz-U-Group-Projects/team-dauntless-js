@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
+import { LeaderboardService } from '../services/http_methods/leaderboard.service';
+
 import { User } from '../models/user';
 
 @Component({
@@ -9,9 +12,11 @@ import { User } from '../models/user';
 export class LeaderboardComponent implements OnInit {
   user: User;
 
-  constructor() { }
+  constructor(leaderboard : LeaderboardService) { }
 
   ngOnInit() {
+    
   }
+
 
 }
