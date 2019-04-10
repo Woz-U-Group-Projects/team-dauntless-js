@@ -4,6 +4,9 @@ import { NgModule } from '@angular/core';
 // Angular Routing
 import { AppRoutingModule } from './app-routing.module';
 
+// HTTP Methods
+import { HttpClientModule } from '@angular/common/http';
+
 // Phaser module
 import { PhaserModule } from 'phaser-component-library';
 
@@ -48,6 +51,7 @@ import { NavbarComponent } from './navbar/navbar.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     PhaserModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
