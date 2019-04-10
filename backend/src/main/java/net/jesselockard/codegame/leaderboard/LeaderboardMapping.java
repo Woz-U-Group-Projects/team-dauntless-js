@@ -1,5 +1,6 @@
 package net.jesselockard.codegame.leaderboard;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,6 +8,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -23,6 +25,7 @@ import net.jesselockard.codegame.leaderboard.chatterStructure.LeaderboardPutRequ
 import net.jesselockard.codegame.leaderboard.chatterStructure.UserKeygenRequest;
 import net.jesselockard.codegame.leaderboard.chatterStructure.UserKeygenResponse;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class LeaderboardMapping {
 	
@@ -116,7 +119,7 @@ public class LeaderboardMapping {
 	}
 	
 	@GetMapping(path = "/leaderboard", produces = { MediaType.APPLICATION_JSON_VALUE })
-	Map<String, Object> getLeaderboard(@RequestHeader(value="Authorization") String JWTUserToken) {
+	List<Object> getLeaderboard(@RequestHeader(value="Authorization") String JWTUserToken) {
 		String token = JWTUserToken.replace("Bearer ", "");
 		
 		/*
@@ -131,17 +134,16 @@ public class LeaderboardMapping {
 		JWTHandler jwt = new JWTHandler();
 		DecodedJWT decodedToken = jwt.verifyUserToken(token);
 		
-		Map<String, Object> leaderboardResponse = new HashMap<String, Object>();
+		List<Object> leaderboardResponse = new ArrayList<Object>();
 
 		if(decodedToken != null) {
 			List<Leaderboard> userBoards = lbRepository.findAll();
 			
 			if(!userBoards.isEmpty()) {
 				userBoards.forEach((leaderboard)-> {
-					leaderboardResponse.put(leaderboard.username, leaderboard);
+					leaderboardResponse.add(leaderboard);
 				});
 			} else {
-				leaderboardResponse.put("error", "No user's were found in the database.");
 			}
 		}
 		
@@ -150,8 +152,6 @@ public class LeaderboardMapping {
 			 * Utilize the leaderboardResponse hash map to return the token used and
 			 * inform the frontend there was an error trying to authenticate the token.
 			 */
-			leaderboardResponse.put("userToken", token);
-			leaderboardResponse.put("error", "There was an error authenticated the user's token.");
 		}
 		
 		return leaderboardResponse;
