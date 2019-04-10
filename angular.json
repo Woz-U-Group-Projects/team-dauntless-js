@@ -23,9 +23,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/theme/code_quest.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/phaser/dist/phaser.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {

@@ -1,11 +1,14 @@
 package net.jesselockard.codegame.leaderboard;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -22,6 +25,7 @@ import net.jesselockard.codegame.leaderboard.chatterStructure.LeaderboardPutRequ
 import net.jesselockard.codegame.leaderboard.chatterStructure.UserKeygenRequest;
 import net.jesselockard.codegame.leaderboard.chatterStructure.UserKeygenResponse;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class LeaderboardMapping {
 	
@@ -41,6 +45,8 @@ public class LeaderboardMapping {
 	
 	/*
 	 * getUserLeaderboard provides a user's (identified by the JWT passed through the header) leaderboard information
+	 * 
+	 * Retrieves a SINGLE leaderboard document.
 	 */
 	@GetMapping(path = "/leaderboard/user", produces = {MediaType.APPLICATION_JSON_VALUE})
 	Map<String, Object> getUserLeaderboard(@RequestHeader(value="Authorization") String JWTUserToken) {
@@ -112,10 +118,45 @@ public class LeaderboardMapping {
 		return leaderboardResponse;
 	}
 	
-	/*
-	 * putUserLeaderboard takes a leaderboard structure from the request body and updates or creates a
-	 * userboard belonging to the JWT's claimed user.
-	 */
+	@GetMapping(path = "/leaderboard", produces = { MediaType.APPLICATION_JSON_VALUE })
+	List<Object> getLeaderboard(@RequestHeader(value="Authorization") String JWTUserToken) {
+		String token = JWTUserToken.replace("Bearer ", "");
+		
+		/*
+		 * Use the JWTHandler to parse the token and ensure the user has been
+		 * truly previously authenticated.
+		 * 
+		 * jwt.verifyUserToken will return null if the tokens signiture or claims are incorrect.
+		 * The signiture should always be correct as it's defined within the JWTHandler class.
+		 * The only claim provided should be within the payload as 'username' which is set to the
+		 * player's username.
+		 */
+		JWTHandler jwt = new JWTHandler();
+		DecodedJWT decodedToken = jwt.verifyUserToken(token);
+		
+		List<Object> leaderboardResponse = new ArrayList<Object>();
+
+		if(decodedToken != null) {
+			List<Leaderboard> userBoards = lbRepository.findAll();
+			
+			if(!userBoards.isEmpty()) {
+				userBoards.forEach((leaderboard)-> {
+					leaderboardResponse.add(leaderboard);
+				});
+			} else {
+			}
+		}
+		
+		else {
+			/*
+			 * Utilize the leaderboardResponse hash map to return the token used and
+			 * inform the frontend there was an error trying to authenticate the token.
+			 */
+		}
+		
+		return leaderboardResponse;
+	}
+	
 	@PostMapping(path = "/leaderboard/user", produces = {MediaType.APPLICATION_JSON_VALUE})
 	Map<String, Object> putUserLeaderboard(@RequestHeader(value="Authorization") String JWTUserToken, @RequestBody LeaderboardPutRequest leaderboardData) {
 		String token = JWTUserToken.replace("Bearer ", "");

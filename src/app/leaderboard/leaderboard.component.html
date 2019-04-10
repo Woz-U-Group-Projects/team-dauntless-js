@@ -1,7 +1,31 @@
-<div class="leaderboard">
-  <h2>High Scores!</h2>
-  <ul>
-    <li *ngFor="let user of users"> <!-- Does the database need to order the scores?-->
-      <p>{{user.username}}: High Score: {{user.highestScore}}</p>
-    </li>
-  </ul>
+<!-- <ul>
+	<li *ngFor="let user of users">
+		<p>{{user.username}}: High Score: {{user.highestScore}}</p>
+	</li>
+</ul> -->
+<section
+ fxLayout="row"
+ fxLayoutAlign="center center">
+
+	<mat-card
+	 fxFlex="75%">
+		<mat-card-title-group>
+			<mat-card-title>Code-Quest High Scores</mat-card-title>
+			<mat-card-subtitle></mat-card-subtitle>
+		</mat-card-title-group>
+		<mat-card-content>
+			<table style="width:100%">
+				<thead>
+					<td><strong>Username</strong></td>
+					<td><strong>Score</strong></td>
+				</thead>
+				<tr
+				 *ngFor="let board of Leaderboards | async">
+					<td>{{ board.username }}</td>
+					<td>{{ board.userScore }}</td>
+				</tr>
+			</table>
+		</mat-card-content>
+	</mat-card>
+
+</section>

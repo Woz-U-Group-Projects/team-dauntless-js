@@ -6,6 +6,7 @@ import {  RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { GameComponent } from './game/game.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'leaderboard',
     component: LeaderboardComponent
+  },
+  {
+    path: 'game',
+    component: GameComponent
   },
   {
     path: '',

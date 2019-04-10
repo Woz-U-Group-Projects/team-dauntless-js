@@ -1,18 +1,28 @@
-<form class="loginform" (ngSubmit)="onSubmit()">
-    <div>
-        <label for="username">Userame: </label>
-        <input type="text" placeholder="name" name="name" required ngModel="user.name">
-    </div>
-    <div>
-        <label for="email">Email: </label>
-        <input type="email" placeholder="email" name="email" email required ngModel="user.email">
-    </div>
-    <div>
-        <label for="password">Password: </label>
-        <input type="text" placeholder="password" name="password" required ngModel="user.password">
-    </div>
-    <div>
-        <button type="submit">Submit</button>
-    </div>
-  </form>
+<section
+ fxLayout="row"
+ fxLayoutAlign="center center">
 
+    <mat-card fxFlex="25%">
+        <mat-card-title-group>
+            <mat-card-title>Register an Account</mat-card-title>
+            <mat-card-subtitle>Enter the details below to create your Code-Quest account.</mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-content>
+            <form 
+             class="registerform"
+             (ngSubmit)="onSubmit()"
+             
+             fxLayout="column"
+             fxLayoutAlign="center center">
+                <mat-form-field>
+                    <input matInput type="text" placeholder="Username" name="name" required ngModel="user.name">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="text" placeholder="Password" name="password" required ngModel="user.password">
+                </mat-form-field>
+                <button mat-flat-button color="primary" type="submit">Login</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+
+</section>
