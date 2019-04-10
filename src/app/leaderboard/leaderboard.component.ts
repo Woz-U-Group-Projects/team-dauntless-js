@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { LeaderboardService } from '../services/http_methods/leaderboard.service';
 
 import { User } from '../models/user';
+import { Leaderboard } from '../models/leaderboard';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-leaderboard',
@@ -10,12 +12,14 @@ import { User } from '../models/user';
   styleUrls: ['./leaderboard.component.css']
 })
 export class LeaderboardComponent implements OnInit {
-  user: User;
+  public Leaderboards : Observable<any>;
 
-  constructor(leaderboard : LeaderboardService) { }
+  public LeaderboardList : any;
+
+  constructor(private leaderboard : LeaderboardService) { }
 
   ngOnInit() {
-    
+    this.Leaderboards = this.leaderboard.getLeaderboardList();
   }
 
 
