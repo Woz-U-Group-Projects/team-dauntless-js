@@ -16,14 +16,13 @@ public class JWTHandler {
 	private JWTVerifier verifier;
 	
 	public JWTHandler() {
-		this.verifier = JWT.require(this.algorithmHS)
-				.build();
+		this.verifier = JWT.require(this.algorithmHS).build();
 	}
 	
 	/*
 	 * Creates a new JWT token using the supplied username.
 	 */
-	public String createUserToken(String username) {
+	public String createUserToken(String username, String password) {
 		String token = null;
 		
 		/*
@@ -33,8 +32,9 @@ public class JWTHandler {
 		 */
 		try {
 			token = JWT.create()
-					.withClaim("username", username)
-					.sign(this.algorithmHS);
+					   .withClaim("username", username)
+					   .withClaim("password", password)
+					   .sign(this.algorithmHS);
 		} catch (JWTCreationException exception) {
 			/*
 			 * Exceptions are made with the JWT.create method when there is an error in
@@ -46,11 +46,10 @@ public class JWTHandler {
 		return token;
 	}
 	
-	/*
-	 * Verifies and decodes the passed token.
-	 * Method will return the DecodedJWT object.
-	 * You can either use the wrappers provided by this classes methods to retrieve header and payload data.
-	 * Alternatively you can use the built in methods provided by the DecodedJWT class.
+	/**
+	 * 
+	 * @param token
+	 * @return a verified and decoded JWT.
 	 */
 	public DecodedJWT verifyUserToken(String token) {
 		DecodedJWT jwt = null;
